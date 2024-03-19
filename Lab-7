@@ -1,0 +1,58 @@
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+from time import perf_counter
+
+a = []
+b = []
+c = []
+for i in range(1000000):
+    a.append(random.randit(1,1000000))
+    b.append(random.randit(1,1000000))
+ar = np.array(a)
+br = np.array(b)
+d1 = perf_counter()
+for j in range(1000000):
+    c.append(ar[i]*br[i])
+end1 = perf_counter - d1
+
+d2 = perf_counter()
+np.multiply(ar, br)
+end2 = perf_counter() - d2
+
+print(f'standartnie spiski - {d1}\n'
+      f'peremnojenie numpy - {d2}\n'
+      f'peremnojenie bistree na {d1 - d2}')
+
+def hist():
+    data = np.genfromtxt('data2.csv',delimiter=',')
+    hist = np.array(data[:, 3])[1:]
+plt.hist(hist, 30)
+plt.title('gistograma')
+plt.xlabel('chastota')
+plt.ylabel('znachenia')
+plt.grid()
+plt.show()
+plt.hist(hist, 30, density=True)
+plt.title('norm gistograma')
+plt.xlabel('chastota')
+plt.ylabel('znachenia')
+plt.grid()
+plt.show()
+
+print(f'otklonenie - {np.std(arr)}')
+
+def plot3d():
+    x = np.linspace(-3*np.pi, 3*np.pi, 50)
+    y = np.x*np.cos(x)
+    z = np.sin(x)
+
+    fig = plt.figure()
+    axes3d = fig.add_subplot(111, projection = '3d')
+    axes3d.plot(x, y, z, c = 'red')
+    plt.title('grafik 3d')
+    plt.show()
+
+if name == 'main':
+    hist()
+    plot3d()
